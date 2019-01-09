@@ -1,5 +1,8 @@
 # Cache objects
 packer_cache/
 
+# Output
+output-virtualbox-iso/
+
 # For built boxes
 *.box
