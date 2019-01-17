@@ -1,4 +1,12 @@
 {
+    "variables": {
+	"cpus": "1",
+	"mem": "1024",
+	"disk": "8192",
+	"root_pw": "7xh8GmwHkreiRqytKDZx",
+	"ssh_user": "alpine",
+	"ssh_pass": "mPRMAUnJtT2XBBCKh2xw"
+    },
     "provisioners": [
         {
             "override": {
@@ -18,8 +26,8 @@
     "builders": [
         {
 	    "vboxmanage": [
-		[ "modifyvm", "{{ .Name }}", "--memory", "1024" ],
-		[ "modifyvm", "{{ .Name }}", "--cpus", "1" ]
+		[ "modifyvm", "{{ .Name }}", "--memory", "{{ user `mem`}}" ],
+		[ "modifyvm", "{{ .Name }}", "--cpus", "{{user `cpus`}}" ]
 	    ],
             "http_directory": "http",
             "guest_os_type": "Linux26_64",
@@ -28,8 +36,8 @@
                 "ifconfig eth0 up && udhcpc -i eth0<enter><wait5>",
                 "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/answers<enter><wait>",
                 "setup-alpine -f answers<enter><wait5>",
-                "Alpine38<enter><wait>",
-                "Alpine38<enter><wait5>",
+                "{{user `root_pw`}}<enter><wait>",
+                "{{user `root_pw`}}<enter><wait5>",
                 "<wait>y<enter><wait10>",
                 "rc-service sshd stop<enter>",
                 "mount /dev/vg0/lv_root /mnt<enter>",
@@ -37,8 +45,8 @@
                 "umount /mnt<enter>",
                 "reboot<enter>"
             ],
-	    "disk_size": 8000,
-            "ssh_password": "Alpine38",
+	    "disk_size": "{{user `disk`}}",
+            "ssh_password": "{{user `root_pw`}}",
             "ssh_username": "root",
             "iso_checksum_type": "sha256",
             "iso_checksum_url": "http://dl-cdn.alpinelinux.org/alpine/v3.8/releases/x86_64/alpine-virt-3.8.2-x86_64.iso.sha256",
