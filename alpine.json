@@ -49,9 +49,9 @@
             "ssh_password": "{{user `root_pw`}}",
             "ssh_username": "root",
             "iso_checksum_type": "sha256",
-            "iso_checksum_url": "http://dl-cdn.alpinelinux.org/alpine/v3.8/releases/x86_64/alpine-virt-3.8.2-x86_64.iso.sha256",
-            "iso_url": "http://dl-cdn.alpinelinux.org/alpine/v3.8/releases/x86_64/alpine-virt-3.8.2-x86_64.iso",
-            "vm_name": "alpine38",
+            "iso_checksum_url": "http://dl-cdn.alpinelinux.org/alpine/v3.9/releases/x86_64/alpine-virt-3.9.3-x86_64.iso.sha256",
+            "iso_url": "http://dl-cdn.alpinelinux.org/alpine/v3.9/releases/x86_64/alpine-virt-3.9.3-x86_64.iso",
+            "vm_name": "alpine39",
             "shutdown_command": "/sbin/poweroff",
             "guest_additions_mode": "disable",
             "type": "virtualbox-iso"
